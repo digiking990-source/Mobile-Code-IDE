@@ -1,0 +1,18 @@
+node_modules/
+.env
+.env.*
+!backend/.env.example
+backend/.env
+android/local.properties
+android/.gradle/
+android/build/
+android/app/build/
+
+# Android / IDE generated files
+android/.idea/
+android/.artifacts/
+*.iml
+
+# Build outputs
+release/*.apk
+release/*.zip

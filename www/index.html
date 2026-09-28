@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101216">
+  <meta name="description" content="A touch-friendly, offline coding workspace for your phone.">
+  <title>CodeStudio — Mobile IDE</title>
+  <link rel="stylesheet" href="styles.css?v=1.7">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand-mark" id="home-button" aria-label="Go to workspace">CS</button>
+      <div class="brand-copy">
+        <strong>CodeStudio</strong>
+        <span id="project-label">MY WORKSPACE</span>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="search-button" aria-label="Search files" title="Search files">⌕</button>
+        <button class="icon-button" id="extensions-button" aria-label="Extensions" title="Extensions">⬡</button>
+        <button class="icon-button" id="agents-button" aria-label="Open AI agents" title="AI agents">✦</button>
+        <button class="icon-button" id="features-button" aria-label="Projects, learning and Git tools" title="More tools">☰</button>
+        <button class="icon-button" id="import-button" aria-label="Import a file" title="Import file">↑</button>
+        <button class="icon-button" id="download-button" aria-label="Export current file" title="Export current file">↓</button>
+        <button class="run-button preview-project-button" id="preview-project-button" aria-label="Preview project in browser" title="Preview the project in a browser"><span aria-hidden="true">▣</span><span> Preview</span></button>
+        <button class="run-button" id="run-button"><span aria-hidden="true">▶</span><span> Run</span></button>
+        <input id="file-input" type="file" hidden>
+        <input id="project-input" type="file" webkitdirectory multiple hidden>
+        <input id="archive-input" type="file" accept=".zip,application/zip" hidden>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar" id="sidebar" aria-label="Project files">
+        <div class="sidebar-heading">
+          <span>EXPLORER</span>
+          <div class="sidebar-actions">
+            <button class="small-icon" id="new-file-button" aria-label="Create new file" title="New file">＋</button>
+            <button class="small-icon" id="new-folder-button" aria-label="Create new folder" title="New folder">▰</button>
+            <button class="small-icon" id="import-project-button" aria-label="Import project folder" title="Import project folder">⇧</button>
+            <button class="small-icon" id="import-archive-button" aria-label="Import project ZIP" title="Import ZIP archive">↑</button>
+            <button class="small-icon" id="export-project-button" aria-label="Export project as ZIP" title="Export project ZIP">↓</button>
+            <button class="small-icon" id="collapse-files-button" aria-label="Collapse file list" title="Collapse all">⌄</button>
+          </div>
+        </div>
+        <button class="project-heading" id="project-toggle"><span>⌄</span> MOBILE-STARTER</button>
+        <div id="file-list" class="file-list"></div>
+        <div class="sidebar-footer">
+          <span class="sync-dot"></span><span>Saved on this device</span>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <div class="mobile-file-heading">
+          <button class="text-button" id="mobile-files-button">‹ Files</button>
+          <span id="mobile-current-name">index.html</span>
+          <button class="small-icon" id="mobile-new-file" aria-label="Create new file">＋</button>
+        </div>
+        <div class="tabbar" id="tabbar" aria-label="Open files"></div>
+        <div class="editor-toolbar">
+          <div class="breadcrumbs"><span>workspace</span><span class="crumb-divider">/</span><strong id="active-path">index.html</strong></div>
+          <div class="editor-tools">
+            <span class="save-state" id="save-state">Saved</span>
+            <button class="small-icon" id="find-button" aria-label="Find in file" title="Find in file">⌕</button>
+            <button class="small-icon" id="editor-menu-button" aria-label="Editor options" title="Editor options">···</button>
+          </div>
+        </div>
+        <div class="find-bar" id="find-bar" hidden>
+          <input id="find-input" type="search" placeholder="Find in this file…" autocomplete="off">
+          <span id="find-count">0 matches</span>
+          <button class="small-icon" id="close-find" aria-label="Close find">×</button>
+        </div>
+        <div class="editor-wrap">
+          <div id="code-editor" class="code-editor"></div>
+          <div class="editor-empty" id="editor-empty" hidden>Select a file to start editing</div>
+        </div>
+        <div class="editor-statusbar">
+          <span id="language-label">HTML</span>
+          <span class="status-spacer"></span>
+          <span id="cursor-label">Ln 1, Col 1</span>
+          <span>UTF-8</span>
+          <span>Spaces: 2</span>
+        </div>
+      </main>
+
+      <section class="bottom-panel" id="bottom-panel" aria-label="Output panel">
+        <div class="panel-heading">
+          <div class="panel-tabs">
+            <button class="panel-tab selected" data-panel="console">CONSOLE</button>
+            <button class="panel-tab" data-panel="terminal">TERMINAL</button>
+            <button class="panel-tab" data-panel="problems">PROBLEMS <span class="problem-count" id="problem-count"></span></button>
+            <button class="panel-tab" data-panel="debug">DEBUG</button>
+            <button class="panel-tab" data-panel="preview">PREVIEW</button>
+          </div>
+          <div class="panel-actions">
+            <span id="run-status">Ready</span>
+            <label class="live-preview-switch" title="Refresh the HTML preview while editing"><input id="live-preview-toggle" type="checkbox"><span>LIVE</span></label>
+            <button class="feature-action live-server-button" id="live-server-button" type="button">Start Server</button>
+            <a class="small-icon" id="open-preview-button" aria-label="Open preview in browser" title="Open preview in browser" target="_blank" rel="noopener noreferrer">↗</a>
+            <button class="small-icon" id="clear-output" aria-label="Clear output" title="Clear output">⌫</button>
+            <button class="small-icon" id="close-panel" aria-label="Hide output panel" title="Hide panel">⌄</button>
+          </div>
+        </div>
+        <pre class="console-output" id="console-output" aria-live="polite"><span class="output-muted">// Your program output will appear here.</span></pre>
+        <pre class="console-output auxiliary-output" id="terminal-output" hidden><span class="output-muted">Workspace terminal supports built-in actions only. This is not an operating-system shell.</span></pre>
+        <div class="problems-output" id="problems-output" hidden></div>
+        <pre class="console-output auxiliary-output" id="debug-output" hidden><span class="output-muted">Run JavaScript to see worker execution status here.</span></pre>
+        <iframe class="preview-frame" id="preview-frame" title="HTML preview" sandbox="allow-scripts" hidden></iframe>
+        <div class="terminal-input">
+          <span class="terminal-prompt">›</span>
+          <input id="command-input" type="text" placeholder="Actions: help, clear, files, run — not an OS shell" autocomplete="off" aria-label="Workspace action command">
+          <button id="command-run" class="text-button">Run</button>
+        </div>
+      </section>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-view="files"><span>▤</span>Files</button>
+      <button class="nav-item" data-view="search"><span>⌕</span>Search</button>
+      <button class="nav-item" data-view="editor"><span>‹ ›</span>Editor</button>
+      <button class="nav-item" data-view="console"><span>⌁</span>Run</button>
+      <button class="nav-item" data-view="agents"><span>✦</span>AI</button>
+    </nav>
+
+    <dialog class="file-dialog" id="file-dialog" aria-labelledby="file-dialog-title">
+      <form id="file-form">
+        <h2 id="file-dialog-title">Create a file</h2>
+        <p>Add a file anywhere in your local workspace.</p>
+        <label for="new-file-path">File path</label>
+        <input id="new-file-path" type="text" placeholder="src/new-file.js" autocomplete="off" maxlength="160" required>
+        <div class="dialog-actions">
+          <button class="dialog-cancel" id="cancel-new-file" type="button">Cancel</button>
+          <button class="dialog-submit" type="submit">Create file</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="agent-dialog" id="agent-dialog" aria-labelledby="agent-title">
+      <div class="agent-header">
+        <div><span class="agent-eyebrow">CODESTUDIO AI</span><h2 id="agent-title">Your coding agents</h2></div>
+        <button class="small-icon" id="close-agent" aria-label="Close AI agents">×</button>
+      </div>
+      <div class="agent-setup">
+        <label for="agent-endpoint">Private HTTPS backend</label>
+        <input id="agent-endpoint" type="url" placeholder="https://your-server.example.com">
+        <div class="agent-setup-row">
+          <label for="agent-token">Backend access token (session only)</label>
+          <input id="agent-token" type="password" placeholder="Session only; never your AI provider key">
+        </div>
+        <button class="text-button" id="save-agent-settings">Connect backend</button>
+      </div>
+      <div class="agent-modes">
+        <button class="agent-mode selected" data-agent-mode="ask">Ask · explain & debug</button>
+        <button class="agent-mode" data-agent-mode="build">Build · propose code</button>
+      </div>
+      <p class="agent-notice" id="agent-notice">Source files are sent to your configured AI backend when you send a prompt. Review every proposed change before applying it.</p>
+      <div class="agent-messages" id="agent-messages" aria-live="polite"></div>
+      <div class="agent-proposal" id="agent-proposal" hidden></div>
+      <form class="agent-form" id="agent-form">
+        <textarea id="agent-prompt" rows="3" maxlength="8000" placeholder="Ask about this code, explain an error, or describe a feature to build…" required></textarea>
+        <button class="agent-send" type="submit">Send</button>
+      </form>
+    </dialog>
+    <dialog class="extensions-dialog" id="extensions-dialog" aria-labelledby="extensions-title">
+      <div class="agent-header">
+        <div><span class="agent-eyebrow">LOCAL & OFFLINE</span><h2 id="extensions-title">Extensions</h2></div>
+        <button class="small-icon" id="close-extensions" aria-label="Close extensions">×</button>
+      </div>
+      <p class="agent-notice">Built-in language packs and tools ship with the app. This safe extension catalog does not execute downloaded code.</p>
+      <div id="extension-list" class="extension-list"></div>
+      <div class="language-packs">
+        <strong>Language support included</strong>
+        <span>JavaScript · TypeScript · JSX · HTML · CSS · JSON · Python · Java · C/C++ · Rust · Go · SQL · PHP · XML · YAML · Markdown</span>
+        <small>Syntax help is not a compiler. Running a language requires a matching local runtime or configured server.</small>
+      </div>
+    </dialog>
+    <dialog class="features-dialog" id="features-dialog" aria-labelledby="features-title">
+      <div class="agent-header">
+        <div><span class="agent-eyebrow">PROJECT WORKSPACE</span><h2 id="features-title">Projects & tools</h2></div>
+        <button class="small-icon" id="close-features" aria-label="Close projects and tools">×</button>
+      </div>
+      <div class="feature-toolbar">
+        <button class="feature-action primary" data-feature="new-project">＋ New project</button>
+        <button class="feature-action" data-feature="projects">Recent projects</button>
+        <button class="feature-action" data-feature="lessons">Python lessons</button>
+        <button class="feature-action" data-feature="git">Local Git</button>
+        <button class="feature-action" data-feature="publish">Publish / export</button>
+        <button class="feature-action" data-feature="replace">Find & replace</button>
+        <button class="feature-action" data-feature="editor">Editor tools</button>
+      </div>
+      <div class="feature-content" id="feature-content" aria-live="polite"></div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="storage.js?v=1.7"></script>
+  <script src="project-catalog.js?v=1.7"></script>
+  <script src="python-lessons.js?v=1.7"></script>
+  <script src="editor.bundle.js?v=1.7"></script>
+  <script src="app.js?v=1.7"></script>
+</body>
+</html>

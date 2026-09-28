@@ -1,0 +1,7 @@
+node_modules
+android
+www
+.env
+.env.*
+backend/.env
+.git

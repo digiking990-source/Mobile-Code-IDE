@@ -1,0 +1,47 @@
+CodeStudio 1.7 - Phone Install
+==============================
+
+Yeh APK offline editor ko apne saath bundle karta hai. Iske liye localhost
+server ya phone par Android Studio ki zaroorat nahi hai.
+
+Python 3.14 ka offline runtime bhi app ke saath bundle hai. Pehli baar Python
+run karne par runtime load hone mein 60 seconds tak lag sakte hain. Python ka
+standard library offline chalega; extra third-party packages shamil nahi hain.
+Ek program 15 seconds se zyada chale to app use rok degi.
+
+Explorer mein folder ke saamne + se file aur folder icon se subfolder banayein;
+··· se folder rename aur × se uske contents delete karein. Upar ☰ menu mein
+multiple projects/templates, Python lessons, local snapshots, editor tools,
+find/replace aur ZIP publish/export milenge. Project preview ke liye upar
+"Preview" ya kisi folder ke saamne ▣ dabayein. LIVE edit ke baad preview refresh
+karta hai. Android par Preview panel ka "Start Server" multi-page website ko
+phone ke browser mein chalata hai; ↗ browser chooser kholta hai. Server phone ke
+andar hi hai; doosre devices se access nahi hota.
+
+Laptop se USB ke zariye ek-click install:
+1. Desktop ke Install-CodeStudio.bat ya CodeStudio-Phone-Install folder ke Install-CodeStudio.bat par double-click karein.
+2. Laptop par Android Studio/JDK, Node.js aur Android SDK hone chahiye.
+3. Phone unlock karke USB debugging chalu karein aur USB debugging prompt Allow karein.
+4. BAT latest web files sync karke naya APK banayegi, phir phone par install/open karegi.
+5. Har build ke baad fresh APK isi folder mein aur CodeStudio-Phone-Install.zip Desktop par banegi; ZIP ko cloud par upload karein.
+
+Install:
+1. Is folder mein CodeStudio.apk ko Google Drive/OneDrive par upload karein.
+2. Phone par file download karein aur Downloads/Files app mein kholein.
+3. "Install unknown apps" aaye to jis Files/Drive app se APK khol rahe hain,
+   uske liye permission allow karein.
+4. Wapas aakar Install dabayein; install ke baad CodeStudio kholein.
+
+Agar "Webpage not available" aaye:
+1. Is folder wala naya CodeStudio.apk download karke purane app ke upar install/update karein.
+2. Agar phir bhi error aaye, apne code ka backup/export karein; uske baad hi purana app uninstall karke is APK ko install karein.
+3. App ko localhost:4173 ya kisi laptop ke local URL ki zaroorat nahi hai.
+4. APK update karne se pehle laptop par Install-CodeStudio.bat dobara chalayein, taaki app ke naye changes APK mein bundle ho.
+
+IMPORTANT: Normal APK update se local workspace rehna chahiye. Uninstall
+karne se app ka local workspace delete ho sakta hai; pehle backup/export karein.
+
+AI Ask/Build agents chalane ke liye alag se HTTPS AI backend configure karna
+zaroori hai. AI provider key APK ke andar nahi hoti.
+
+Build: CodeStudio 1.7 (Android debug APK, version code 8)

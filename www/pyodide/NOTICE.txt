@@ -1,0 +1,10 @@
+CodeStudio offline Python runtime
+
+Pyodide is distributed under the Mozilla Public License 2.0.
+Source and license: https://github.com/pyodide/pyodide
+
+CPython and the bundled Python standard library are distributed under the
+Python Software Foundation License.
+License: https://docs.python.org/3/license.html
+
+See pyodide-lock.json for runtime package metadata.

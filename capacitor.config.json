@@ -1,0 +1,8 @@
+{
+  "appId": "com.sachin.codestudio",
+  "appName": "CodeStudio",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
