@@ -1,16 +1,21 @@
-# 🚀 CodeStudio Mobile
+# 🚀 digiking990 | CodeStudio Mobile
 
 <p align="center">
   <img src="./Demo/demo.gif" alt="CodeStudio Mobile Live Demo" width="900">
 </p>
 
 <p align="center">
-  <strong>An offline-first mobile coding workspace for developers.</strong>
+  <strong>Developed by <a href="https://github.com">@digiking990</a> — An offline-first mobile coding workspace for developers.</strong>
 </p>
 
 <p align="center">
   CodeMirror Editor • Project Explorer • Local Storage • JavaScript Runner • Python Runtime • HTML Preview • AI Agents
 </p>
+
+---
+
+## 👨‍💻 About the Developer
+Hi! I am **digiking990**, a developer passionate about building accessible coding tools. **CodeStudio Mobile** is one of my premier projects hosted here on my official GitHub profile.
 
 ---
 
@@ -35,7 +40,6 @@ It combines a modern **CodeMirror editor**, local project management, JavaScript
 ## 🔥 Key Features
 
 ### 💻 Advanced Code Editor
-
 - CodeMirror-based editor
 - Syntax highlighting
 - Language-aware completion
@@ -48,7 +52,6 @@ It combines a modern **CodeMirror editor**, local project management, JavaScript
 - Dark and light themes
 
 ### 📁 Project Management
-
 - Multiple locally saved workspaces
 - Recent-project switching
 - Rename projects
@@ -63,7 +66,6 @@ It combines a modern **CodeMirror editor**, local project management, JavaScript
 - Save and restore snapshots
 
 ### ▶️ Code Execution
-
 - JavaScript execution through a short-lived Worker
 - Offline Python 3.14 runtime
 - Pyodide WebAssembly runtime
@@ -72,7 +74,6 @@ It combines a modern **CodeMirror editor**, local project management, JavaScript
 - `hello.py` starter example
 
 ### 🌐 HTML Preview
-
 - Automatically detects `index.html`
 - HTML/CSS/JavaScript preview
 - Live refresh
@@ -83,7 +84,6 @@ It combines a modern **CodeMirror editor**, local project management, JavaScript
 - Browser chooser
 
 ### 🧪 Developer Panels
-
 - Console
 - Limited workspace-action Terminal
 - Problems panel
@@ -92,7 +92,6 @@ It combines a modern **CodeMirror editor**, local project management, JavaScript
 - Worker/Preview diagnostics
 
 ### 📚 Learning Tools
-
 - Guided offline Python exercises
 - Automatic output checks
 - Project-wide Find & Replace
@@ -101,15 +100,12 @@ It combines a modern **CodeMirror editor**, local project management, JavaScript
 - Dark/light application themes
 
 ### 🤖 AI Coding Agents
-
 CodeStudio includes optional AI agents powered through an OpenAI-compatible backend.
 
 #### Ask
-
 Ask coding questions and receive programming assistance.
 
 #### Build
-
 Generate complete file changes as a reviewable proposal.
 
 AI-generated changes are **not automatically applied**. You review the proposed changes and tap **Apply** when you are ready.
@@ -142,3 +138,7 @@ Markdown
 Angular
 WAST
 Lezer
+```
+
+---
+<p align="center">Connect with me on GitHub: <a href="https://github.com">://github.com</a></p>
